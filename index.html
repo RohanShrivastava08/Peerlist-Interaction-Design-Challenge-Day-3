@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Peerlist — Card → Page (Polished Minimal)</title>
+
+  <!-- Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Preload the three hero images to avoid any mid-animation swap -->
+  <link rel="preload" as="image" href="https://plus.unsplash.com/premium_photo-1755612139894-7f904df6d21f?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw1Nnx8fGVufDB8fHx8fA%3D%3D" />
+  <link rel="preload" as="image" href="https://images.unsplash.com/photo-1755868384622-b3d5e697be62?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwyN3x8fGVufDB8fHx8fA%3D%3D" />
+  <link rel="preload" as="image" href="https://images.unsplash.com/photo-1755858454416-2b5513f3f960?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwyOXx8fGVufDB8fHx8fA%3D%3D" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="https://peerlist.io" target="_blank" rel="noopener">
+      <img id="peerlistLogo" alt="Peerlist logo" width="22" height="22" src="https://cdn.simpleicons.org/peerlist/12B886" />
+      <svg id="peerlistLogoFallback" width="22" height="22" viewBox="0 0 64 64" aria-hidden="true">
+        <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#12B886"/><stop offset="100%" stop-color="#00E396"/></linearGradient></defs>
+        <rect x="6" y="6" width="52" height="52" rx="14" fill="url(#g)"/>
+        <path fill="#fff" d="M22 18h14c9 0 14 5 14 12s-5 12-14 12h-6v10H22V18zm8 10v12h6c4 0 6-3 6-6s-2-6-6-6h-6z"/>
+      </svg>
+      <span class="brand-text">Peerlist</span>
+    </a>
+    <button id="themeToggle" class="ghost-btn" aria-label="Toggle theme">🌗</button>
+  </header>
+
+  <main class="wrap">
+    <h1 class="title">Card → Page</h1>
+    <p class="subtitle">Minimal. Classy. Perfectly smooth. Click a card.</p>
+
+    <section id="grid" class="grid">
+      <!-- Card 1 (your image) -->
+      <article class="card" data-id="alpha" data-hires="https://plus.unsplash.com/premium_photo-1755612139894-7f904df6d21f?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw1Nnx8fGVufDB8fHx8fA%3D%3D">
+        <div class="card-media">
+          <img
+            src="https://plus.unsplash.com/premium_photo-1755612139894-7f904df6d21f?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw1Nnx8fGVufDB8fHx8fA%3D%3D"
+            alt="Clean product desk" width="900" height="560" loading="eager" decoding="async" />
+        </div>
+        <div class="card-body">
+          <h3>Design System for Builders</h3>
+          <p>A cohesive DS for showcasing proof-of-work on Peerlist.</p>
+        </div>
+      </article>
+
+      <!-- Card 2 (your image) -->
+      <article class="card" data-id="beta" data-hires="https://images.unsplash.com/photo-1755868384622-b3d5e697be62?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwyN3x8fGVufDB8fHx8fA%3D%3D">
+        <div class="card-media">
+          <img
+            src="https://images.unsplash.com/photo-1755868384622-b3d5e697be62?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwyN3x8fGVufDB8fHx8fA%3D%3D"
+            alt="Minimal mobile mockups" width="900" height="560" loading="eager" decoding="async" />
+        </div>
+        <div class="card-body">
+          <h3>Mobile Profile Revamp</h3>
+          <p>Faster discovery, smoother micro-interactions, better hireability.</p>
+        </div>
+      </article>
+
+      <!-- Card 3 (your earlier image) -->
+      <article class="card" data-id="gamma" data-hires="https://images.unsplash.com/photo-1755858454416-2b5513f3f960?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwyOXx8fGVufDB8fHx8fA%3D%3D">
+        <div class="card-media">
+          <img
+            src="https://images.unsplash.com/photo-1755858454416-2b5513f3f960?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwyOXx8fGVufDB8fHx8fA%3D%3D"
+            alt="Abstract hero" width="900" height="560" loading="eager" decoding="async" />
+        </div>
+        <div class="card-body">
+          <h3>Creator Analytics</h3>
+          <p>Understand what content lands jobs, track portfolio traction.</p>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <!-- Destination page -->
+  <section id="page" aria-hidden="true">
+    <div class="page-hero">
+      <img id="pageHeroImg" alt="Expanded visual" width="1200" height="700" />
+    </div>
+
+    <div class="page-content">
+      <div class="breadcrumbs">
+        <button id="backBtn" class="pill">← Back</button>
+        <span class="crumb">/ Peerlist</span>
+      </div>
+
+      <h2 id="pageTitle">Title</h2>
+      <p id="pageDesc" class="lead">Description</p>
+
+      <div class="page-meta">
+        <span class="pill soft">⚡ Performance</span>
+        <span class="pill soft">🔎 Clarity</span>
+        <span class="pill soft">🧠 Focus</span>
+      </div>
+
+      <div class="cta">
+        <a class="primary-btn" href="https://peerlist.io" target="_blank" rel="noopener">View on Peerlist</a>
+        <button class="ghost-btn" id="shareBtn">Share</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FLIP fallback layer -->
+  <div id="ghostLayer" aria-hidden="true"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
