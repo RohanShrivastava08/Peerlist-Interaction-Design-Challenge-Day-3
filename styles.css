@@ -1,121 +1,283 @@
-:root{
-    /* Light minimal palette */
-    --bg:#f7f9fb;
-    --surface:#ffffff;
-    --text:#0e1417;
-    --muted:#516067;
-    --line:rgba(0,0,0,.08);
-    --brand:#12B886;
-    --brand-2:#00E396;
-  
-    --radius-xl:18px;
-    --shadow:0 8px 24px rgba(0,0,0,.06);
-  
-    /* Motion */
-    --dur:520ms;
-    --ease:cubic-bezier(.22,.72,.16,1);
+:root {
+  /* Light minimal palette */
+  --bg: #f7f9fb;
+  --surface: #ffffff;
+  --text: #0e1417;
+  --muted: #516067;
+  --line: rgba(0, 0, 0, 0.08);
+  --brand: #12b886;
+  --brand-2: #00e396;
+
+  --radius-xl: 18px;
+  --shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+
+  /* Motion */
+  --dur: 520ms;
+  --ease: cubic-bezier(0.22, 0.72, 0.16, 1);
+}
+
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Ubuntu,
+    "Helvetica Neue", Arial;
+  color: var(--text);
+  background: var(--bg);
+}
+
+/* Header */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background: linear-gradient(
+    to bottom,
+    rgba(247, 249, 251, 0.95),
+    rgba(247, 249, 251, 0.75)
+  );
+  border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(8px);
+}
+.brand {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  color: inherit;
+  text-decoration: none;
+}
+#peerlistLogoFallback {
+  display: none;
+}
+.brand-text {
+  font-weight: 800;
+}
+.ghost-btn,
+.primary-btn,
+.pill {
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--text);
+  padding: 8px 12px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  cursor: pointer;
+  transition: transform 0.16s ease, opacity 0.16s ease;
+}
+.ghost-btn:hover {
+  transform: translateY(-1px);
+  opacity: 0.9;
+}
+.primary-btn {
+  background: linear-gradient(135deg, var(--brand), var(--brand-2));
+  border: 0;
+  color: white;
+}
+
+.wrap {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 24px 16px 64px;
+}
+.title {
+  margin: 0 0 6px;
+  font-size: clamp(26px, 3.2vw, 36px);
+  font-weight: 800;
+}
+.subtitle {
+  margin: 0 0 18px;
+  color: var(--muted);
+}
+
+.grid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+/* Cards */
+.card {
+  position: relative;
+  border-radius: var(--radius-xl);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  transition: transform 0.16s ease, border-color 0.16s ease;
+}
+.card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(0, 0, 0, 0.12);
+}
+.card-media {
+  aspect-ratio: 16/10;
+  background: #eef3f6;
+  overflow: hidden;
+}
+.card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transform: translateZ(0);
+}
+.card-body {
+  padding: 12px 12px 14px;
+}
+.card-body h3 {
+  margin: 6px 0 6px;
+  font-size: 17px;
+  font-weight: 700;
+}
+.card-body p {
+  margin: 0;
+  color: var(--muted);
+}
+
+/* Page */
+#page {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  overflow: auto;
+  z-index: 20;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.02), transparent 30%),
+    var(--bg);
+  transition: opacity 0.24s ease, visibility 0.24s ease;
+}
+#page.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.page-hero {
+  position: relative;
+  height: 42vh;
+  min-height: 280px;
+  overflow: hidden;
+  background: #eef3f6;
+  border-bottom: 1px solid var(--line);
+}
+.page-hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transform: translateZ(0);
+}
+
+.page-content {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 20px 16px 80px;
+}
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--muted);
+}
+.pill {
+  background: rgba(0, 0, 0, 0.03);
+}
+.pill.soft {
+  background: rgba(18, 184, 134, 0.1);
+  border-color: rgba(18, 184, 134, 0.28);
+  color: #0f5a45;
+}
+
+#pageTitle {
+  font-size: clamp(26px, 3.2vw, 38px);
+  margin: 16px 0 8px;
+  font-weight: 800;
+}
+.lead {
+  color: #4d5a60;
+  font-size: clamp(16px, 1.5vw, 18px);
+  margin: 0 0 8px;
+}
+.page-meta {
+  margin: 14px 0 22px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.cta {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* View Transition defaults (JS will set names) */
+.vt-source,
+.vt-target {
+  view-transition-name: none;
+  contain: paint;
+  border-radius: var(--radius-xl);
+}
+::view-transition-group(*) {
+  animation-duration: var(--dur);
+  animation-timing-function: var(--ease);
+}
+::view-transition-old(*),
+::view-transition-new(*) {
+  animation-duration: var(--dur);
+  animation-timing-function: var(--ease);
+}
+
+/* FLIP fallback */
+#ghostLayer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 30;
+}
+.ghost {
+  position: fixed;
+  overflow: hidden;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--line);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  transform-origin: 0 0;
+  will-change: transform, opacity;
+}
+
+/* Utility to hide originals during animation to avoid overlap */
+.hidden-during-anim {
+  opacity: 0 !important;
+}
+
+/* Disable interactions while animating */
+.is-animating {
+  pointer-events: none;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  #page {
+    transition: none !important;
   }
-  
-  *{box-sizing:border-box}
-  html,body{height:100%}
-  body{
-    margin:0;
-    font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial;
-    color:var(--text);
-    background:var(--bg);
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
   }
-  
-  /* Header */
-  .site-header{
-    position:sticky; top:0; z-index:10;
-    display:flex; align-items:center; justify-content:space-between;
-    padding:12px 16px;
-    background:linear-gradient(to bottom, rgba(247,249,251,.95), rgba(247,249,251,.75));
-    border-bottom:1px solid var(--line);
-    backdrop-filter: blur(8px);
-  }
-  .brand{display:flex; gap:10px; align-items:center; color:inherit; text-decoration:none}
-  #peerlistLogoFallback{display:none}
-  .brand-text{font-weight:800}
-  .ghost-btn,.primary-btn,.pill{
-    border-radius:999px; border:1px solid var(--line); background:transparent; color:var(--text);
-    padding:8px 12px; font-weight:600; letter-spacing:.2px; cursor:pointer; transition:transform .16s ease, opacity .16s ease;
-  }
-  .ghost-btn:hover{transform:translateY(-1px); opacity:.9}
-  .primary-btn{background:linear-gradient(135deg, var(--brand), var(--brand-2)); border:0; color:white}
-  
-  .wrap{max-width:1080px; margin:0 auto; padding:24px 16px 64px;}
-  .title{margin:0 0 6px; font-size:clamp(26px,3.2vw,36px); font-weight:800}
-  .subtitle{margin:0 0 18px; color:var(--muted)}
-  
-  .grid{
-    display:grid; gap:12px;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  }
-  
-  /* Cards */
-  .card{
-    position:relative; border-radius:var(--radius-xl);
-    background:var(--surface);
-    border:1px solid var(--line);
-    overflow:hidden; box-shadow:var(--shadow);
-    cursor:pointer;
-    transition:transform .16s ease, border-color .16s ease;
-  }
-  .card:hover{ transform:translateY(-3px); border-color:rgba(0,0,0,.12); }
-  .card-media{ aspect-ratio:16/10; background:#eef3f6; overflow:hidden }
-  .card-media img{ width:100%; height:100%; object-fit:cover; display:block; transform:translateZ(0); }
-  .card-body{ padding:12px 12px 14px; }
-  .card-body h3{ margin:6px 0 6px; font-size:17px; font-weight:700 }
-  .card-body p{ margin:0; color:var(--muted) }
-  
-  /* Page */
-  #page{
-    position:fixed; inset:0; display:grid; grid-template-columns:1fr;
-    overflow:auto; z-index:20; opacity:0; visibility:hidden; pointer-events:none;
-    background:linear-gradient(180deg, rgba(0,0,0,.02), transparent 30%), var(--bg);
-    transition:opacity .24s ease, visibility .24s ease;
-  }
-  #page.active{ opacity:1; visibility:visible; pointer-events:auto; }
-  
-  .page-hero{
-    position:relative; height:42vh; min-height:280px; overflow:hidden; background:#eef3f6;
-    border-bottom:1px solid var(--line);
-  }
-  .page-hero img{ width:100%; height:100%; object-fit:cover; display:block; transform:translateZ(0); }
-  
-  .page-content{ max-width:860px; margin:0 auto; padding:20px 16px 80px; }
-  .breadcrumbs{ display:flex; align-items:center; gap:10px; color:var(--muted); }
-  .pill{ background:rgba(0,0,0,.03); }
-  .pill.soft{ background:rgba(18,184,134,.10); border-color:rgba(18,184,134,.28); color:#0f5a45 }
-  
-  #pageTitle{ font-size: clamp(26px, 3.2vw, 38px); margin:16px 0 8px; font-weight:800 }
-  .lead{ color:#4d5a60; font-size:clamp(16px, 1.5vw, 18px); margin:0 0 8px; }
-  .page-meta{ margin:14px 0 22px; display:flex; gap:8px; flex-wrap:wrap;}
-  .cta{ display:flex; gap:8px; flex-wrap:wrap; }
-  
-  /* View Transition defaults (JS will set names) */
-  .vt-source,.vt-target{ view-transition-name: none; contain: paint; border-radius: var(--radius-xl); }
-  ::view-transition-group(*){ animation-duration: var(--dur); animation-timing-function: var(--ease); }
-  ::view-transition-old(*),::view-transition-new(*){ animation-duration: var(--dur); animation-timing-function: var(--ease); }
-  
-  /* FLIP fallback */
-  #ghostLayer{ position:fixed; inset:0; pointer-events:none; z-index:30; }
-  .ghost{
-    position:fixed; overflow:hidden; border-radius:var(--radius-xl);
-    border:1px solid var(--line); background:var(--surface);
-    box-shadow:var(--shadow); transform-origin:0 0; will-change: transform, opacity;
-  }
-  
-  /* Utility to hide originals during animation to avoid overlap */
-  .hidden-during-anim{ opacity:0 !important; }
-  
-  /* Disable interactions while animating */
-  .is-animating{ pointer-events:none; }
-  
-  /* Respect reduced motion */
-  @media (prefers-reduced-motion: reduce){
-    .card,#page{ transition:none !important; }
-    ::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){ animation:none !important; }
-  }
-  
+}
